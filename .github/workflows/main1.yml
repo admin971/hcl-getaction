@@ -9,4 +9,4 @@ jobs:
    - name: code checkout
      uses: actions/checkout@v4.2.2
    - name: print
-     run: echo ' pull request work flow triggered'
+     run: echo ' push request work flow triggered'
