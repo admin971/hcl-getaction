@@ -1,12 +1,15 @@
 name: git-action-test
 
-on: push
+on:
+  push:
+  pull_request:
 
 jobs:
- code-checkout:
-  runs-on: Ubuntu-latest
-  steps:
-   - name: code checkout
-     uses: actions/checkout@v4.2.2
-   - name: print
-     run: echo ' push request work flow triggered'
+  code-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: print
+        run: echo 'Triggered by push or PR (even from fork)'
