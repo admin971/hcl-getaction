@@ -1,6 +1,8 @@
 name: git-action-test
 
-on: push
+on: 
+   push:
+   pull_request:
 
 jobs:
  code-checkout:
@@ -9,4 +11,4 @@ jobs:
    - name: code checkout
      uses: actions/checkout@v4.2.2
    - name: print
-     run: echo ' first work flow '
+     run: echo ' pull request work flow triggered'
