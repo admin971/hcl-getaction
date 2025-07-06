@@ -1,15 +1,24 @@
-name: git-action-test
+name: Node.js CI
 
 on:
   push:
   pull_request:
 
 jobs:
-  code-checkout:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: code checkout
+      - name: Checkout code
         uses: actions/checkout@v4.2.2
 
-      - name: print
-        run: echo 'Triggered by push or PR (even from fork)'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run app
+        run: npm start
