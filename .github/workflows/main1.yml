@@ -1,0 +1,12 @@
+name: git-action-test
+
+on: push 
+
+jobs:
+ code-checkout:
+  runs-on: Ubuntu-latest
+  steps:
+   - name: code checkout
+     uses: action/checkout@v4.2.2
+   - name: print
+     run echo ' first work flow'
