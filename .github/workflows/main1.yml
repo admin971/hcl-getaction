@@ -1,24 +1,31 @@
-name: Node.js CI
+name: Java CI with Maven 
 
-on:
-  push:
-  pull_request:
+on: 
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+  push: 
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.2
+    branches: 
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+      - main 
 
-      - name: Install dependencies
-        run: npm install
+  pull_request: 
 
-      - name: Run app
-        run: npm start
+    branches: 
+
+      - main 
+
+  workflow_dispatch: 
+
+jobs: 
+
+  build: 
+
+    runs-on: ubuntu-latest 
+
+    steps: 
+
+      - name: Checkout repository 
+
+        uses: actions/checkout@v4 
+
+      - name: Set up JDK 17 
