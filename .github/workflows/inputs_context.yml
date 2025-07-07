@@ -1,0 +1,16 @@
+name: inputs-practice
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'karthikeyan_hcl'
+        required: true
+        default: 'prod-user'
+
+jobs:
+  show-input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Input Value
+        run: echo "Hello_hcl, ${{ inputs.username }}!"
