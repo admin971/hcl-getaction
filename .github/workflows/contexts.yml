@@ -1,6 +1,8 @@
 name : contexts-test
 
-on: push 
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
     echo-data:
@@ -15,3 +17,7 @@ jobs:
                   echo "workflow: ${{ github.workflow }}"
                   echo "RUN ID: ${{ github.run_id }}"
                   echo "RUN NUMBER: ${{ github.run_number}}"
+              - name: Retrieve Variable
+                run: |
+                  echo "Variable Value: ${{vars.my_var}}"
+                
