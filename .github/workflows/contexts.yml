@@ -1,0 +1,17 @@
+name : contexts-test
+
+on: push 
+
+jobs:
+    echo-data:
+         runs-on: ubuntu-latest
+         steps:
+             - name: Display information 
+               run: |
+                  echo "events name: ${{ github.event_name }}"
+                  echo "ref: ${{ github.ref }}"
+                  echo "SHA: ${{ github.sha }}"
+                  echo "ACTOR: ${{ github.actor }}"
+                  echo "workflow: ${{ github.workflow }}"
+                  echo "RUN ID: ${{ github.run_id }}"
+                  echo "RUN NUMBER: ${{ github.run_number}}" 
