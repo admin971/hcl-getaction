@@ -1,0 +1,21 @@
+name: env-practice
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_ENV: "This is a workflow-level env"
+
+jobs:
+  show-env:
+    runs-on: ubuntu-latest
+    env:
+      JOB_ENV: "This is a job-level env"
+    steps:
+      - name: Step-level env
+        env:
+          STEP_ENV: "This is a step-level env"
+        run: |
+          echo "Global Env: ${{ env.GLOBAL_ENV }}"
+          echo "Job Env: ${{ env.JOB_ENV }}"
+          echo "Step Env: ${{ env.STEP_ENV }}"
