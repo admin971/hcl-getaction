@@ -1,0 +1,21 @@
+name: if-else-practice
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  MY_FLAG: "true"  # Change to "false" to test the else branch
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run if MY_FLAG is true
+        if: ${{ env.MY_FLAG == 'true' }}
+        run: echo "MY_FLAG is true, running main logic."
+
+      - name: Run if MY_FLAG is NOT true (else)
+        if: ${{ env.MY_FLAG != 'true' }}
+        run: echo "MY_FLAG is not true, running fallback logic."
