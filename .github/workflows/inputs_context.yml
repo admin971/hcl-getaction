@@ -1,7 +1,7 @@
 name: inputs-practice
 
 on:
-  workflow_dispatch:
+  push:
     inputs:
       username:
         description: 'karthikeyan_hcl'
