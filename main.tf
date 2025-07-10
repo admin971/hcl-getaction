@@ -198,10 +198,30 @@ resource "aws_instance" "images" {
               #!/bin/bash
               sudo apt update -y
               sudo apt install -y nginx
-              mkdir -p /var/www/html
-              echo "This is the Images Page" > /var/www/html/index.html
-              systemctl restart nginx
+              mkdir -p /var/www/html/images
+              echo "This is the Images Page" > /var/www/html/images/index.html
+              cat <<EOCONF | sudo tee /etc/nginx/sites-enabled/default
+              server {
+                  listen 80 default_server;
+                  listen [::]:80 default_server;
+                  root /var/www/html;
+                  index index.html index.htm;
+
+                  server_name _;
+
+                  location / {
+                      try_files \$uri \$uri/ =404;
+                  }
+
+                  location /images {
+                      root /var/www/html;
+                      index index.html;
+                  }
+              }
+              EOCONF
+              sudo systemctl restart nginx
 EOF
+
 
 
   tags = {
